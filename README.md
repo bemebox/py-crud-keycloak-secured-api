@@ -50,12 +50,6 @@ Run the application and then access to the API documentation
 * [API Documentation](http://localhost:8081/docs)
 
 
-To run the unit tests, first check that the pytest library is installed, then run the python command.
-```
-$pytest tests/
-```
-
-
 ##### Public Endpoints
 * [GET API Health Check](http://localhost:8081/api/tasks/health)
 * [GET task by ID](http://localhost:8081/api/tasks/{id})
@@ -67,7 +61,10 @@ $pytest tests/
 * [DELETE Delete Task](http://localhost:8081/api/tasks/{id})
 
 ### Test
-Run the program with python main.py.
+To run the unit tests, first check that the pytest library is installed, then run the python command.
+```
+$pytest tests/
+```
 
 ## Authors
 
