@@ -1,7 +1,8 @@
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, Depends, status, HTTPException
 from schemas import task_request, task_response
 from typing import List
 from uuid import UUID, uuid4
+from security.auth_bearer import JwtBearer
 
 router = APIRouter()
 tasks_tags_metadata = {
@@ -16,6 +17,7 @@ tasks = []
     "",
     response_model=task_response.TaskResponse,
     status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(JwtBearer())],
 )
 def create_task(_task_request: task_request.TaskRequest):
 
@@ -44,7 +46,11 @@ def read_tasks():
     return tasks
 
 
-@router.put("/{task_id}", response_model=task_response.TaskResponse)
+@router.put(
+    "/{task_id}",
+    response_model=task_response.TaskResponse,
+    dependencies=[Depends(JwtBearer())],
+)
 def update_task(task_id: UUID, task_update: task_request.TaskRequest):
     for index, _task in enumerate(tasks):
         if _task.id == task_id:
@@ -58,7 +64,11 @@ def update_task(task_id: UUID, task_update: task_request.TaskRequest):
     raise HTTPException(status_code=404, detail="Task not found")
 
 
-@router.delete("/{task_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/{task_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    dependencies=[Depends(JwtBearer())],
+)
 def delete_task(task_id: UUID):
     for index, _task in enumerate(tasks):
         if _task.id == task_id:

@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from routers import tasks as task_router, health as health_router
+from configuration import configuration
 
 
 app = FastAPI(
@@ -19,6 +20,7 @@ app.include_router(task_router.router, prefix="/api/tasks", tags=["tasks"])
 def main():
     import uvicorn
 
+    configuration.configure()
     uvicorn.run("main:app", host="127.0.0.1", port=8081, reload=True)
 
 

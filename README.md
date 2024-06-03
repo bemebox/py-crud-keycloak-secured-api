@@ -10,6 +10,9 @@ This program was developed according with Python's good practices and based on [
 ## Resources
 * [Python 3](https://docs.python.org/3/)
 * [FastAPI](https://fastapi.tiangolo.com/)
+* [PyJWT](https://pyjwt.readthedocs.io/en/stable/)
+* [requests](https://docs.python-requests.org/en/v2.0.0/)
+* [python-dotenv](https://pypi.org/project/python-dotenv/)
 
 
 ## Getting Started
@@ -20,7 +23,10 @@ These instructions will guide you to copy the project from the repository and ru
 
 Things you need to have installed:
 * [Python](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
-* [FastAPI](https://devdocs.io/fastapi/)
+* [FastAPI](https://fastapi.tiangolo.com/#installation)
+* [PyJWT](https://pyjwt.readthedocs.io/en/stable/installation.html)
+* [requests](https://docs.python-requests.org/en/v2.0.0/user/install/#install)
+* [python-dotenv](https://pypi.org/project/python-dotenv/#getting-started)
 * [uvicorn](https://www.uvicorn.org/)
 * [pytest](https://pytest.org/en/latest/contents.html)
 
@@ -38,8 +44,14 @@ $python -m venv env
 $source env/bin/activate
 ```
 
+### Environment Variables
+Ensure that the .env file exists and has the environment variables for your application:
+* KEYCLOAK_VALIDATE_TOKEN_URL - The keycloak URL to validate the token 
+* KEYCLOAK_CLIENT_ID - The keycloak client ID, of the current service, to validate the token
+* KEYCLOAK_CLIENT_SECRET - The keycloak client secret, of the current service, to validate the token
+
 ### Run
-To run the project, first check that the FastAPI, uvicorn libraries are installed, then run the python command.
+To run the project, first check that the FastAPI, PyJWT, requests, python-dotenv libraries are installed, then run the python command.
 ```
 $python main.py
 ```
@@ -61,7 +73,7 @@ Run the application and then access to the API documentation
 * [DELETE Delete Task](http://localhost:8081/api/tasks/{id})
 
 ### Test
-To run the unit tests, first check that the pytest library is installed, then run the python command.
+To run the unit tests, first check that the FastAPI, PyJWT, requests, python-dotenv and pytest libraries are installed, then run the python command:
 ```
 $pytest tests/
 ```
