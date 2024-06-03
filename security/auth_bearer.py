@@ -28,12 +28,12 @@ class JwtBearer(HTTPBearer):
         payload = keycloak_client.fetch_token_validation_response(jwtoken)
         roles = keycloak_client.get_user_roles(payload)
 
-        if "write_race_circuit" in roles:
+        if "write_role" in roles:
             isTokenValid = True
         else:
             if payload.get("active", {}) == False:
                 logger.warning("Token expired.")
             else:
-                logger.warning("User lacks the 'write_race_circuit' role.")
+                logger.warning("User lacks the 'write_role' role.")
 
         return isTokenValid

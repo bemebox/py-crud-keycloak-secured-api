@@ -71,6 +71,9 @@ Run the application and then access to the API documentation
 * [POST Create Task](http://localhost:8081/api/tasks)
 * [PUT Update Task](http://localhost:8081/api/tasks/{id})
 * [DELETE Delete Task](http://localhost:8081/api/tasks/{id})
+ \
+![Private Solution Diagram](./documentation/images/API_PRIVATE_RESOURCES_SEQUENCE_DIAGRAM.png)
+ \
 
 ### Test
 To run the unit tests, first check that the FastAPI, PyJWT, requests, python-dotenv and pytest libraries are installed, then run the python command:
